@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
 
         if (direction.magnitude > minVelocityForRun)
         {
-            Debug.Log(speedFactor);
             speedFactor += growingFactor * Time.deltaTime;
             if(speedFactor > maxVelocity)
             {
@@ -64,8 +63,14 @@ public class Player : MonoBehaviour
         else
         {
             speedFactor -= growingFactor * Time.deltaTime;
-            if(speedFactor <= 2)
+            //Si llegamos al límite inferior del bleend tree o nos quedamos parados...
+            if (speedFactor <= 2 || direction.magnitude < 0.5f)
+            {
                 running = false;
+                speedFactor = 2;
+            }
+            //if(speedFactor <= 2)
+            //    running = false;
         }
     }
 
@@ -74,6 +79,7 @@ public class Player : MonoBehaviour
     {
         direction = new Vector3(controllerDir.x, 0, controllerDir.y);
         anim.SetFloat("velocity", direction.magnitude * speedFactor);
+        Debug.Log(direction.magnitude * speedFactor);
         if(running)
             HandleRunning();
         if (attack)
