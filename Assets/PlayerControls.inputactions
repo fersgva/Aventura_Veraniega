@@ -22,9 +22,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "DrawSword",
+                    "name": "Sword",
                     "type": "Button",
                     "id": "6bba102c-9bc3-4060-9347-6e78e5f08dc6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "4ba78fba-24a5-4396-ab6e-079b0f2e4d80",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -60,7 +68,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DrawSword",
+                    "action": "Sword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fae76355-cfd1-4f5c-9d2a-a09eeff9a91d",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

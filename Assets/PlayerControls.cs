@@ -35,9 +35,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""DrawSword"",
+                    ""name"": ""Sword"",
                     ""type"": ""Button"",
                     ""id"": ""6bba102c-9bc3-4060-9347-6e78e5f08dc6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ba78fba-24a5-4396-ab6e-079b0f2e4d80"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -73,7 +81,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DrawSword"",
+                    ""action"": ""Sword"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fae76355-cfd1-4f5c-9d2a-a09eeff9a91d"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -86,7 +105,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Run = m_Gameplay.FindAction("Run", throwIfNotFound: true);
-        m_Gameplay_DrawSword = m_Gameplay.FindAction("DrawSword", throwIfNotFound: true);
+        m_Gameplay_Sword = m_Gameplay.FindAction("Sword", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -138,14 +158,16 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Run;
-    private readonly InputAction m_Gameplay_DrawSword;
+    private readonly InputAction m_Gameplay_Sword;
+    private readonly InputAction m_Gameplay_Interact;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Run => m_Wrapper.m_Gameplay_Run;
-        public InputAction @DrawSword => m_Wrapper.m_Gameplay_DrawSword;
+        public InputAction @Sword => m_Wrapper.m_Gameplay_Sword;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -161,9 +183,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Run.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRun;
-                @DrawSword.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrawSword;
-                @DrawSword.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrawSword;
-                @DrawSword.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDrawSword;
+                @Sword.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSword;
+                @Sword.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSword;
+                @Sword.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSword;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -174,9 +199,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
-                @DrawSword.started += instance.OnDrawSword;
-                @DrawSword.performed += instance.OnDrawSword;
-                @DrawSword.canceled += instance.OnDrawSword;
+                @Sword.started += instance.OnSword;
+                @Sword.performed += instance.OnSword;
+                @Sword.canceled += instance.OnSword;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -185,6 +213,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
-        void OnDrawSword(InputAction.CallbackContext context);
+        void OnSword(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
