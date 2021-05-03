@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
     Animator anim;
     float speedFactor = 2f;
     CharacterController controller;
+    AnimatorStateInfo currentState;
     bool running;
     bool attack;
-    [SerializeField] GameObject realPlayerSword;
-    [SerializeField] GameObject fakeSword;
+
     private void Awake()
     {
         plControls = new PlayerControls();
@@ -38,9 +38,9 @@ public class Player : MonoBehaviour
     }
     void HandleSword()
     {
-        AnimatorStateInfo currentState = anim.GetCurrentAnimatorStateInfo(0);
-        if(currentState.IsName("BreathingIdle"))
-            anim.SetTrigger("drawSword");
+        if(currentState.IsName("BreathingIdleWSword") && direction.magnitude < 0.125f)
+            anim.SetTrigger("guardar");
+
         else
             anim.SetTrigger("attack");
 
@@ -73,24 +73,21 @@ public class Player : MonoBehaviour
             //    running = false;
         }
     }
-
     // Update is called once per frame
     void Update()
     {
+        currentState = anim.GetCurrentAnimatorStateInfo(0);
         direction = new Vector3(controllerDir.x, 0, controllerDir.y);
         anim.SetFloat("velocity", direction.magnitude * speedFactor);
         Debug.Log(direction.magnitude * speedFactor);
-        if(running)
+        if (running)
             HandleRunning();
         if (attack)
             HandleSword();
-        //if(anim.GetFloat("velocity") < 0.7f)
-        //{
-        //    CancelRunning();
-        //}
-        if (direction.magnitude > 0.15f) //Zona muerta --> También establecido en el animator!!!
+
+        if (direction.magnitude > 0.125f && !currentState.IsName("BasicAttack")) //Zona muerta --> También establecido en el animator!!!
         {
-            //Debug.Log(direction.normalized);
+            //timeForRest = 0;
             Quaternion rotDestino = Quaternion.LookRotation(direction, transform.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotDestino, 7 * Time.deltaTime);
             controller.Move(direction * direction.magnitude * speedFactor * Time.deltaTime);
