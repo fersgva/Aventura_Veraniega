@@ -1,36 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class PlayerInputsAnims : MonoBehaviour
 {
-    PlayerControls plControls;
+    [HideInInspector] public PlayerControls plControls;
     Vector2 controllerDir;
     Vector3 direction;
     Animator anim;
     float speedFactor = 2f;
     CharacterController controller;
     AnimatorStateInfo currentState;
-    Transform interactionPoint;
     bool running;
     bool attack;
-    bool interact;
-    [SerializeField] LayerMask isInteractuable;
-    [SerializeField] GameObject pruebaCubo;
+
+    public static PlayerInputsAnims plInputScr;
     private void Awake()
     {
+        if (plInputScr == null)
+            plInputScr = this;
+        else if (plInputScr != this)
+            Destroy(gameObject);
+
         plControls = new PlayerControls();
         anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
-        interactionPoint = transform.GetChild(2);
         //Evento a la escucha de movernos.
         plControls.Gameplay.Move.performed += ctx => controllerDir = ctx.ReadValue<Vector2>();
         plControls.Gameplay.Move.canceled += ctx => controllerDir = Vector2.zero;
 
         plControls.Gameplay.Run.performed += ctx => running = true;
         plControls.Gameplay.Sword.performed += ctx => attack = true;
-        plControls.Gameplay.Interact.performed += ctx => interact = true;
     }
     private void OnEnable()
     {
@@ -45,8 +45,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos = Camera.main.WorldToViewportPoint(pruebaCubo.transform.position);
-        Debug.Log(pos);
+
         currentState = anim.GetCurrentAnimatorStateInfo(0);
         direction = new Vector3(controllerDir.x, 0, controllerDir.y);
         anim.SetFloat("velocity", direction.magnitude * speedFactor);
@@ -55,8 +54,6 @@ public class Player : MonoBehaviour
             HandleRunning();
         if (attack)
             HandleSword();
-        if (interact)
-            HandleInteraction();
 
         if (direction.magnitude > 0.125f && !currentState.IsName("BasicAttack") && !currentState.IsName("GuardarEspada1")) //Zona muerta --> También establecido en el animator!!!
         {
@@ -104,25 +101,8 @@ public class Player : MonoBehaviour
             //    running = false;
         }
     }
-    void HandleInteraction()
-    {
-        Debug.Log("inter");
-        Collider[] colls = Physics.OverlapSphere(interactionPoint.position, 0.7f, isInteractuable);
-        if(colls.Length > 0)
-        {
-           if(colls[0].CompareTag("NPC"))
-           {
-                colls[0].transform.GetChild(0).gameObject.SetActive(true);
-           }
-        }
-        interact = false;
-    }
     private void OnDisable()
     {
         plControls.Gameplay.Disable();
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(interactionPoint.position, 0.7f);
     }
 }
