@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteractions : MonoBehaviour
 {
     PlayerControls plControls;
-    bool interactButton;
     Transform interactionPoint;
     [SerializeField] LayerMask isInteractuable;
     Collider[] collsInFront;
     Collider lastCollInFront;
-    NPC lastInteractScript;
-    bool interacting;
-
+    Interactuable lastInteractScript;
+    bool interactButton;
+    [HideInInspector] public bool interacting;
     public static PlayerInteractions plInterScr;
     private void Awake()
     {
@@ -20,11 +20,12 @@ public class PlayerInteractions : MonoBehaviour
             plInterScr = this;
         else if (plInterScr != this)
             Destroy(gameObject);
+
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        PlayerInputsAnims.plInputScr.plControls.Gameplay.Interact.performed += ctx => interactButton = true;
         interactionPoint = transform.GetChild(2);
     }
 
@@ -37,9 +38,9 @@ public class PlayerInteractions : MonoBehaviour
             if (collsInFront.Length > 0)
             {
                 lastCollInFront = collsInFront[0];
-                lastInteractScript = lastCollInFront.transform.GetComponent<NPC>();
+                lastInteractScript = lastCollInFront.transform.GetComponent<Interactuable>();
                 lastInteractScript.EnableIcon();
-                if (interactButton)
+                if (Gamepad.current.buttonNorth.wasPressedThisFrame)
                     HandleInteraction();
             }
             else
@@ -57,16 +58,28 @@ public class PlayerInteractions : MonoBehaviour
 
     void HandleInteraction()
     {
-        Debug.Log("hola");
         if (lastCollInFront.CompareTag("NPC"))
         {
             interacting = true;
             PlayerInputsAnims.plInputScr.enabled = false; //Deshabilito script de movimiento.
-            lastInteractScript.GetComponent<NPC>().Talk();
+            NPC npcScript = lastInteractScript.GetComponent<NPC>();
+            npcScript.Talk();
         }
         interactButton = false;
     }
-
+    void Prueba()
+    {
+        interactButton = !interactButton;
+    }
+    public IEnumerator ContinueConversation(NPC npcTalking)
+    {
+        while (!Gamepad.current.buttonNorth.wasPressedThisFrame)
+        {
+            Debug.Log("esperando");
+            yield return null;
+        }
+        npcTalking.NextSentence();
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(interactionPoint.position, 0.7f);
