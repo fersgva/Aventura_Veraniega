@@ -10,14 +10,14 @@ public class NPC : Interactuable
     TextMeshProUGUI bubbleText;
     int sentenceIndex = 0;
     GameObject player;
-    RectTransform canvasTransform;
+    Vector3 globalCanvasPos;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         bubbleGO = thisCanvas.transform.GetChild(0).gameObject;
         bubbleText = bubbleGO.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        canvasTransform = thisCanvas.GetComponent<RectTransform>();
+        globalCanvasPos = thisCanvas.transform.TransformPoint(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -30,7 +30,6 @@ public class NPC : Interactuable
         thisCanvas.SetActive(true);
         bubbleGO.SetActive(true);
         interactIcon.SetActive(false);
-        StartCoroutine(Speech());
         StartCoroutine(TurnToPlayer());
     }
     public override void EnableIcon()
@@ -51,14 +50,16 @@ public class NPC : Interactuable
     }
     IEnumerator TurnToPlayer()
     {
+        thisCanvas.transform.SetParent(null);
+        thisCanvas.transform.position = globalCanvasPos;
         Vector3 dirToLook = (player.transform.position - transform.position).normalized;
         Quaternion rotDestino = Quaternion.LookRotation(dirToLook, transform.up);
         while (transform.rotation != rotDestino)
         {
-            Debug.Log(canvasTransform.TransformPoint(canvasTransform.rect.center));
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotDestino, 360 * Time.deltaTime);
             yield return null;
         }
+        StartCoroutine(Speech());
     }
 
     public void NextSentence()
@@ -72,7 +73,7 @@ public class NPC : Interactuable
         }
         else
         {
-            thisCanvas.SetActive(false);
+            thisCanvas.transform.SetParent(transform);
             PlayerInputsAnims.plInputScr.enabled = true;
             PlayerInteractions.plInterScr.interacting = false;
             sentenceIndex = 0; //prepararlo para la próxima.
