@@ -15,11 +15,11 @@ D:/PruebasUnity/Aventura_Veraniega/Aventura_Veraniega
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-65084
+59107
 Successfully changed project path to: D:/PruebasUnity/Aventura_Veraniega/Aventura_Veraniega
 D:/PruebasUnity/Aventura_Veraniega/Aventura_Veraniega
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 78.82 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 77.68 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.0f1 (61a549675243)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.1.0f1/Editor/Data/Resources/UnitySubsystems
@@ -36,63 +36,171 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.1.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.1.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.1.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56916
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56284
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002048 seconds.
+Registered in 0.001834 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 82.75 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 81.58 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.091 seconds
+- Completed reload, in  1.873 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001510 seconds.
+Registered in 0.001216 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 89.01 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 95.38 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.377 seconds
+- Completed reload, in  1.092 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 1.57 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.83 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2763 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 132.7 MB.
 System memory in use after: 132.9 MB.
 
 Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 3230.
-Total: 2.710200 ms (FindLiveObjects: 0.238300 ms CreateObjectMapping: 0.115600 ms MarkObjects: 2.288700 ms  DeleteObjects: 0.066400 ms)
+Total: 2.705100 ms (FindLiveObjects: 0.264600 ms CreateObjectMapping: 0.137000 ms MarkObjects: 2.205500 ms  DeleteObjects: 0.096700 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/Interactuable.cs
-  artifactKey: Guid(834d7be83be159b4c8b5f7a498791dcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Interactuable.cs using Guid(834d7be83be159b4c8b5f7a498791dcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f865838b21a6b89c7b76ccb11a4b679e') in 0.057045 seconds 
+  path: Assets/MixamoFBXS/GuardarEspada1Edit.anim
+  artifactKey: Guid(4c60778c29bbef247a543c032691f5ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/GuardarEspada1Edit.anim using Guid(4c60778c29bbef247a543c032691f5ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f9907ca9d78fd03889c2fd38f83a125') in 0.068691 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.904561 seconds.
+  path: Assets/MixamoFBXS/GuardarEspada2Edit.anim
+  artifactKey: Guid(d23fac579c5bc56478a0868f93444758) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/GuardarEspada2Edit.anim using Guid(d23fac579c5bc56478a0868f93444758) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4be3daf568ab9a4e74770be98e1be857') in 0.015343 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.802908 seconds.
+  path: Assets/MixamoFBXS/PlayerFBXs
+  artifactKey: Guid(2f709d8894bdffb48a50427fdb65b887) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/PlayerFBXs using Guid(2f709d8894bdffb48a50427fdb65b887) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3262f7a7b4383a8d5b6728042fc695b') in 0.008428 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001115 seconds.
+Registered in 0.001358 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.98 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.86 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.835 seconds
+- Completed reload, in  0.966 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.85 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.81 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2640 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 125.8 MB.
-System memory in use after: 126.0 MB.
+System memory in use before: 125.9 MB.
+System memory in use after: 126.1 MB.
 
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 3233.
-Total: 3.291100 ms (FindLiveObjects: 0.327200 ms CreateObjectMapping: 0.269300 ms MarkObjects: 2.665000 ms  DeleteObjects: 0.028900 ms)
+Total: 2.433400 ms (FindLiveObjects: 0.221300 ms CreateObjectMapping: 0.109100 ms MarkObjects: 2.072400 ms  DeleteObjects: 0.029700 ms)
 
+========================================================================
+Received Import Request.
+  Time since last request: 694.576793 seconds.
+  path: Assets/MixamoFBXS/Generic
+  artifactKey: Guid(8016f38e836288840bde78f71c5389e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic using Guid(8016f38e836288840bde78f71c5389e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e606d53df82c371b364da561e5eb5d1e') in 0.011963 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.484158 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (1).fbx
+  artifactKey: Guid(8091e61fec50c5e48a64330f8ffe3efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (1).fbx using Guid(8091e61fec50c5e48a64330f8ffe3efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1197493c921340a59c63b40b3ecd139') in 0.256681 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking.fbx
+  artifactKey: Guid(d78454771bb7f7248be42a5277989915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking.fbx using Guid(d78454771bb7f7248be42a5277989915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7479aabd9820673a8dbdfe842bb1ec9b') in 0.027740 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (2).fbx
+  artifactKey: Guid(78bcd27f39ed4ce4d8cb8594929f68ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (2).fbx using Guid(78bcd27f39ed4ce4d8cb8594929f68ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7cec9d7ced9b9af567e6a4a6f72cb55') in 0.030000 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 17.326856 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (1).fbx
+  artifactKey: Guid(8091e61fec50c5e48a64330f8ffe3efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (1).fbx using Guid(8091e61fec50c5e48a64330f8ffe3efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a93f517942260c9340a05715cd50f7b8') in 0.029428 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.519415 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (1).fbx
+  artifactKey: Guid(8091e61fec50c5e48a64330f8ffe3efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (1).fbx using Guid(8091e61fec50c5e48a64330f8ffe3efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdbca2bc44a7f76360fd44040c3c6352') in 0.032085 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 17.379393 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (1).fbx
+  artifactKey: Guid(8091e61fec50c5e48a64330f8ffe3efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (1).fbx using Guid(8091e61fec50c5e48a64330f8ffe3efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f35464f86e3ee25fd14fc60aca2e3d4') in 0.029794 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.646593 seconds.
+  path: Assets/Anims/NPC.controller
+  artifactKey: Guid(cc223f924a0dab549a7b0c6b69f304e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Anims/NPC.controller using Guid(cc223f924a0dab549a7b0c6b69f304e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf0ec7143d8aa12676ab2297864f02e9') in 0.051703 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 23.897437 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (2).fbx
+  artifactKey: Guid(78bcd27f39ed4ce4d8cb8594929f68ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (2).fbx using Guid(78bcd27f39ed4ce4d8cb8594929f68ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78a1b55d0ad4252fcacaaa6e413f30fd') in 0.029177 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.555212 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (2).fbx
+  artifactKey: Guid(78bcd27f39ed4ce4d8cb8594929f68ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (2).fbx using Guid(78bcd27f39ed4ce4d8cb8594929f68ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ef7e60b7899be67d6fd3921b7468b53') in 0.029817 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 36.795615 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (2).fbx
+  artifactKey: Guid(78bcd27f39ed4ce4d8cb8594929f68ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking (2).fbx using Guid(78bcd27f39ed4ce4d8cb8594929f68ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0cba595cd11f8f66d43e4121fb38211') in 0.032787 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.479899 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking.fbx
+  artifactKey: Guid(d78454771bb7f7248be42a5277989915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking.fbx using Guid(d78454771bb7f7248be42a5277989915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ab178eca42d51a7870d62b7cb94e977') in 0.028257 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.789654 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking.fbx
+  artifactKey: Guid(d78454771bb7f7248be42a5277989915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking.fbx using Guid(d78454771bb7f7248be42a5277989915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bda8e47d6bd58afc858986fa001838c') in 0.027405 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 20.060556 seconds.
+  path: Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking.fbx
+  artifactKey: Guid(d78454771bb7f7248be42a5277989915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MixamoFBXS/Generic/Mixamo_POLYGON_Guy_Naked@Talking.fbx using Guid(d78454771bb7f7248be42a5277989915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2732a9b7952cc6394d12d1d74feb35c') in 0.027835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 301.042595 seconds.
+  path: Assets/Anims/NPC.controller
+  artifactKey: Guid(cc223f924a0dab549a7b0c6b69f304e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Anims/NPC.controller using Guid(cc223f924a0dab549a7b0c6b69f304e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fdaa094fd1591507edbad57d7c145f9') in 0.046725 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 234.395774 seconds.
+  path: Assets/Anims/NPC.controller
+  artifactKey: Guid(cc223f924a0dab549a7b0c6b69f304e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Anims/NPC.controller using Guid(cc223f924a0dab549a7b0c6b69f304e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '233e50ef4634ed96366a861fb7da88ec') in 0.048154 seconds 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

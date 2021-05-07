@@ -62,8 +62,7 @@ public class PlayerInteractions : MonoBehaviour
         {
             interacting = true;
             PlayerInputsAnims.plInputScr.enabled = false; //Deshabilito script de movimiento.
-            NPC npcScript = lastInteractScript.GetComponent<NPC>();
-            npcScript.Talk();
+            lastInteractScript.Interact();
         }
         interactButton = false;
     }

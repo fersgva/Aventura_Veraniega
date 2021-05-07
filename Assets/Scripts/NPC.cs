@@ -6,9 +6,11 @@ using TMPro;
 public class NPC : Interactuable
 {
     [SerializeField] string[] sentences;
+    Animator anim;
     GameObject bubbleGO;
     TextMeshProUGUI bubbleText;
     int sentenceIndex = 0;
+    int lastTalkingAnim = 0;
     GameObject player;
     Vector3 globalCanvasPos;
     // Start is called before the first frame update
@@ -17,6 +19,7 @@ public class NPC : Interactuable
         player = GameObject.FindGameObjectWithTag("Player");
         bubbleGO = thisCanvas.transform.GetChild(0).gameObject;
         bubbleText = bubbleGO.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        anim = GetComponent<Animator>();
         globalCanvasPos = thisCanvas.transform.TransformPoint(0, 0, 0);
     }
 
@@ -25,11 +28,10 @@ public class NPC : Interactuable
     {
         
     }
-    public void Talk()
+    public override void Interact()
     {
-        thisCanvas.SetActive(true);
+        base.Interact();
         bubbleGO.SetActive(true);
-        interactIcon.SetActive(false);
         StartCoroutine(TurnToPlayer());
     }
     public override void EnableIcon()
@@ -39,6 +41,11 @@ public class NPC : Interactuable
     }
     IEnumerator Speech()
     {
+        int randomTalk;
+        while ((randomTalk = Random.Range(1, 4)) == lastTalkingAnim) ;
+
+        lastTalkingAnim = randomTalk;
+        anim.SetTrigger("talk" + randomTalk);
         char[] thisSentenceCaracs = sentences[sentenceIndex].ToCharArray();
         foreach (char carac in thisSentenceCaracs)
         {

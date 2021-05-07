@@ -19,4 +19,9 @@ public class Interactuable : MonoBehaviour
     {
         thisCanvas.SetActive(false);
     }
+    public virtual void Interact()
+    {
+        thisCanvas.SetActive(true);
+        interactIcon.SetActive(false);
+    }
 }
