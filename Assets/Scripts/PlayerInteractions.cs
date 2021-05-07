@@ -74,7 +74,6 @@ public class PlayerInteractions : MonoBehaviour
     {
         while (!Gamepad.current.buttonNorth.wasPressedThisFrame)
         {
-            Debug.Log("esperando");
             yield return null;
         }
         npcTalking.NextSentence();
