@@ -62,20 +62,14 @@ public class PlayerInteractions : MonoBehaviour
         {
             interacting = true;
             PlayerInputsAnims.plInputScr.enabled = false; //Deshabilito script de movimiento.
+            PlayerInputsAnims.plInputScr.anim.SetTrigger("guardar");
             lastInteractScript.Interact();
         }
         interactButton = false;
     }
-    void Prueba()
-    {
-        interactButton = !interactButton;
-    }
     public IEnumerator ContinueConversation(NPC npcTalking)
     {
-        while (!Gamepad.current.buttonNorth.wasPressedThisFrame)
-        {
-            yield return null;
-        }
+        yield return new WaitUntil(() => Gamepad.current.buttonNorth.wasPressedThisFrame);
         npcTalking.NextSentence();
     }
     private void OnDrawGizmos()

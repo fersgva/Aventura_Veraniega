@@ -7,7 +7,7 @@ public class PlayerInputsAnims : MonoBehaviour
     [HideInInspector] public PlayerControls plControls;
     Vector2 controllerDir;
     Vector3 direction;
-    Animator anim;
+    [HideInInspector] public Animator anim;
     float speedFactor = 2f;
     CharacterController controller;
     AnimatorStateInfo currentState;
@@ -69,7 +69,7 @@ public class PlayerInputsAnims : MonoBehaviour
         if (currentState.IsName("BreathingIdleWSword") && direction.magnitude < 0.125f)
             anim.SetTrigger("guardar");
 
-        else
+        else if(!currentState.IsName("BasicAttack")) //Si no estoy ya atacando.
             anim.SetTrigger("attack");
 
         attack = false;

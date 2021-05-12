@@ -41,11 +41,13 @@ public class NPC : Interactuable
     }
     IEnumerator Speech()
     {
-        int randomTalk;
-        while ((randomTalk = Random.Range(1, 4)) == lastTalkingAnim) ;
-
+        //------------Random anim--------------//
+        int randomTalk = 0;
+        yield return new WaitUntil(() => (randomTalk = Random.Range(1, 4)) != lastTalkingAnim);
         lastTalkingAnim = randomTalk;
         anim.SetTrigger("talk" + randomTalk);
+        //-----------------------------------//
+
         char[] thisSentenceCaracs = sentences[sentenceIndex].ToCharArray();
         foreach (char carac in thisSentenceCaracs)
         {
