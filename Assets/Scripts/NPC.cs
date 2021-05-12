@@ -13,7 +13,6 @@ public class NPC : Interactuable
     int lastTalkingAnim = 0;
     GameObject player;
     Vector3 globalCanvasPos;
-    Coroutine currentSpeech;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,14 +41,11 @@ public class NPC : Interactuable
     }
     IEnumerator Speech()
     {
-        //-----------Random anim ------------//
-        int randomTalk = 0;
-        yield return new WaitWhile(() => (randomTalk = Random.Range(1, 4)) == lastTalkingAnim) ;
+        int randomTalk;
+        while ((randomTalk = Random.Range(1, 4)) == lastTalkingAnim) ;
+
         lastTalkingAnim = randomTalk;
         anim.SetTrigger("talk" + randomTalk);
-        //--------------------------------------//
-
-
         char[] thisSentenceCaracs = sentences[sentenceIndex].ToCharArray();
         foreach (char carac in thisSentenceCaracs)
         {
@@ -57,6 +53,7 @@ public class NPC : Interactuable
             yield return new WaitForSeconds(0.05f);
         }
         interactIcon.SetActive(true);
+        StartCoroutine(PlayerInteractions.plInterScr.ContinueConversation(this));
     }
     IEnumerator TurnToPlayer()
     {
@@ -69,42 +66,26 @@ public class NPC : Interactuable
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotDestino, 360 * Time.deltaTime);
             yield return null;
         }
-        currentSpeech = StartCoroutine(Speech());
-        //Doy la posibilidad de que me pueda "cortar" el Player.
-        StartCoroutine(PlayerInteractions.plInterScr.ContinueConversation(this));
+        StartCoroutine(Speech());
     }
 
     public void NextSentence()
     {
-        if (currentSpeech != null) //Si hay un speech en proceso...
+        sentenceIndex++;
+        if(sentenceIndex < sentences.Length)
         {
-            //Lo corto...
-            StopCoroutine(currentSpeech);
-            currentSpeech = null;
-            bubbleText.text = sentences[sentenceIndex];
-
+            interactIcon.SetActive(false);
+            bubbleText.text = "";
+            StartCoroutine(Speech());
         }
         else
         {
-            Debug.Log("hola");
-            sentenceIndex++;
-            if (sentenceIndex < sentences.Length)
-            {
-                interactIcon.SetActive(false);
-                bubbleText.text = "";
-                currentSpeech = StartCoroutine(Speech());
-            }
-            else
-            {
-                thisCanvas.transform.SetParent(transform);
-                PlayerInputsAnims.plInputScr.enabled = true;
-                PlayerInteractions.plInterScr.interacting = false;
-                sentenceIndex = 0; //prepararlo para la próxima.
-                bubbleText.text = "";
-            }
+            thisCanvas.transform.SetParent(transform);
+            PlayerInputsAnims.plInputScr.enabled = true;
+            PlayerInteractions.plInterScr.interacting = false;
+            sentenceIndex = 0; //prepararlo para la próxima.
+            bubbleText.text = "";
         }
-
-        
     }
 }
     
