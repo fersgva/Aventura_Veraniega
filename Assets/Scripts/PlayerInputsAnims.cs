@@ -7,7 +7,7 @@ public class PlayerInputsAnims : MonoBehaviour
     [HideInInspector] public PlayerControls plControls;
     Vector2 controllerDir;
     Vector3 direction;
-    [HideInInspector] public Animator anim;
+    Animator anim;
     float speedFactor = 2f;
     CharacterController controller;
     AnimatorStateInfo currentState;
@@ -100,6 +100,21 @@ public class PlayerInputsAnims : MonoBehaviour
             //if(speedFactor <= 2)
             //    running = false;
         }
+    }
+    public void HandleAnimsForInteraction()
+    {
+        //Para prevenir que se quede el script con velo != 0 cuando se deshabilita.
+        anim.SetFloat("velocity", 0);
+
+        //Porque si estabas corriendo justo antes de interaccionar, después, sigues corriendo.
+        speedFactor = 2;
+        running = false;
+
+        if ( !(currentState.IsName("BreathingIdle") || currentState.IsName("WalkingBlend")) )
+        {
+            anim.SetTrigger("guardar");
+        }
+            
     }
     private void OnDisable()
     {

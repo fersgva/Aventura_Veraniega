@@ -11,7 +11,6 @@ public class PlayerInteractions : MonoBehaviour
     Collider[] collsInFront;
     Collider lastCollInFront;
     Interactuable lastInteractScript;
-    bool interactButton;
     [HideInInspector] public bool interacting;
     public static PlayerInteractions plInterScr;
     private void Awake()
@@ -61,11 +60,22 @@ public class PlayerInteractions : MonoBehaviour
         if (lastCollInFront.CompareTag("NPC"))
         {
             interacting = true;
+            PlayerInputsAnims.plInputScr.HandleAnimsForInteraction();
             PlayerInputsAnims.plInputScr.enabled = false; //Deshabilito script de movimiento.
-            PlayerInputsAnims.plInputScr.anim.SetTrigger("guardar");
-            lastInteractScript.Interact();
+            StartCoroutine(LookAtInteraction());
         }
-        interactButton = false;
+    }
+    IEnumerator LookAtInteraction()
+    {
+
+        Vector3 dirToLook = (lastCollInFront.transform.position - transform.position).normalized;
+        Quaternion rotDestino = Quaternion.LookRotation(dirToLook, transform.up);
+        while (transform.rotation != rotDestino)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotDestino, 360 * Time.deltaTime);
+            yield return null;
+        }
+        lastInteractScript.Interact();
     }
     public IEnumerator ContinueConversation(NPC npcTalking)
     {
