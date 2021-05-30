@@ -24,24 +24,18 @@ public class Enemy : MonoBehaviour
     void Update()
     {
     }
-    void CalculateNewDest()
+    IEnumerator NavigateToNewDest()
     {
         Vector3 newDest = initPos + Random.insideUnitSphere * navRadius;
         //Para que el nuevo punto al que ir no esté tan cerca del que estamos ahora.
         while(Vector3.Distance(transform.position, newDest) < minDistanceToNewPoint)
         {
             newDest = initPos + Random.insideUnitSphere * navRadius;
-        }
-        currentDest = newDest;
-    }
-    IEnumerator NavigateToNewDest()
-    {
-        CalculateNewDest();
-        agent.SetDestination(currentDest);
-        while (agent.remainingDistance != 0 || agent.pathPending)
-        {
             yield return null;
         }
+        currentDest = newDest;
+        agent.SetDestination(currentDest);
+        yield return new WaitUntil(() => agent.remainingDistance == 0 && !agent.pathPending);
         StartCoroutine(Wait());
     }
     IEnumerator Wait()
