@@ -51,8 +51,10 @@ public class Enemy : MonoBehaviour
                     {
                         enemState = State.combat;
                         StopAllCoroutines();
-                        anim.SetBool("looking", false);
-                        agent.stoppingDistance = 2;
+                        anim.SetBool("looking", false); //por si esaba mirando.
+                        transform.forward = dirToTarget;
+                        anim.SetTrigger("alert");
+                        agent.isStopped = true;
                     }
                 }
             }
@@ -61,6 +63,12 @@ public class Enemy : MonoBehaviour
         {
             agent.SetDestination(target.transform.position);
         }
+    }
+
+    void OnAlertFinish()
+    {
+        agent.isStopped = false;
+        agent.stoppingDistance = 2;
     }
     IEnumerator NavigateToNewDest()
     {
